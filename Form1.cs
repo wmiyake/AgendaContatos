@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AgendaADONET
@@ -19,8 +20,12 @@ namespace AgendaADONET
            private void Form1_Load(object sender, EventArgs e)
         {
             ContatoDAO contatoDAO = new ContatoDAO();
-            DataTable dataTable = contatoDAO.GetContatos();
-            dgvAgenda.DataSource = dataTable;
+            /* DataTable dataTable = contatoDAO.GetContatos();
+             dgvAgenda.DataSource = dataTable;*/
+
+            DataSet ds = contatoDAO.GetContatos();
+            dgvAgenda.DataSource = ds.Tables["CONTATOS"];
+
             dgvAgenda.Refresh();
         }
     }
